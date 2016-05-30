@@ -21,8 +21,9 @@ Distributed as-is; no warranty is given.
 
 ---
 
-Modified by John Keefe May 2016
-To check OpenWeatherMap for rain forcast in next 12-15 hrs
+Modified by John Keefe 
+May 2016
+To check OpenWeatherMap for rain forecast in next 12-15 hrs
 
   If LED in Pin 13 & ground ...
   Quick "heartbeat" flashes during check,
@@ -30,6 +31,9 @@ To check OpenWeatherMap for rain forcast in next 12-15 hrs
   Flashing = Bring an umbrella!
   
   Reset or turn off/on to check again
+
+This code is released under the MIT license.
+Distributed as-is; no warranty is given.
 
 ************************************************************/
 
@@ -57,6 +61,7 @@ const char myPSK[] = "YourWifiPasswordGoesHere";
 ////////////////////////
 // Forecast Variables //
 ////////////////////////
+boolean forecastFound = false;
 boolean itWillRain = false;
 
 //////////////////
@@ -93,7 +98,7 @@ void setup()
 
   // go check the forecast!
   delay(100);
-  clientDemo();
+  getWeather();
   
   // adding an extra blank line for clarity
   Serial.println();
@@ -109,12 +114,15 @@ void setup()
       digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
       delay(1000);              // wait for a second
     }
-  } else {
+  } else if (itWillRain == false && forecastFound == true) {
     Serial.println("No rain in the forecast for the next 12-15 hours.");
     // give a steady all-clear
     digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
     delay(20000);             // wait for 20 seconds
     digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
+  } else {
+    // forecastFound is still false
+    Serial.println("Hmmmm. Having trouble reading the forecast :-(");
   }
   
 }
@@ -206,7 +214,7 @@ void displayConnectInfo()
   Serial.print(F("My IP: ")); Serial.println(myIP);
 }
 
-void clientDemo()
+void getWeather()
 {
   // To use the ESP8266 as a TCP client, use the 
   // ESP8266Client class. First, create an object:
@@ -223,7 +231,6 @@ void clientDemo()
     Serial.println(F("Failed to connect to server."));
     return;
   }
-
 
   // These are variables we're going to use below. Read on!
   int numberOfFinds = 0;
@@ -273,7 +280,8 @@ void clientDemo()
     // look for "id": in the stream of data, written as \x22id\x22:
     if ( client.find( "\x22id\x22:" ) ) {
 
-      // found one! add to the number
+      // found one! Note that and add to the number
+      forecastFound = true;
       numberOfFinds += 1;
       Serial.print("id number ");
       Serial.print(numberOfFinds);
@@ -287,7 +295,7 @@ void clientDemo()
         digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
       }
       
-      // remember, we only want the 2nd through 6th id.
+      // remember, we only want the 2nd through 6th "id"
       // so looking for the ones greater than 1 and less
       // than 7. The && means "and."
       if ( numberOfFinds > 1 && numberOfFinds < 7) {
