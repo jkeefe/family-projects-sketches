@@ -23,7 +23,7 @@ float tempF;
 void setup() {
   // Start the Serial Monitor stream
   Serial.begin(9600);
-  pinMode(13, OUTPUT);
+  pinMode(13, OUTPUT);  
 }
 
 void loop() {
