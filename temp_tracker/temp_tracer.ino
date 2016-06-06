@@ -127,7 +127,7 @@ void loop()
   Serial.println(voltage);
   
   temp = (voltage-500) / 10;
-  Serial.print(F("Degrees Celcius: "));
+  Serial.print(F("Degrees Celsius: "));
   Serial.println(temp);
 
   postToPhant(temp);
