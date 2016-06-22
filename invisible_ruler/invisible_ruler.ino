@@ -29,6 +29,8 @@ void loop()
   pinMode(pingPin, OUTPUT);
   digitalWrite(pingPin, LOW);
   delayMicroseconds(2);
+  
+  // the next three lines send out a 5-microsecond "chirp"
   digitalWrite(pingPin, HIGH);
   delayMicroseconds(5);
   digitalWrite(pingPin, LOW);
