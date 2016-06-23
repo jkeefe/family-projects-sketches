@@ -49,21 +49,11 @@ June 2016
 // const char mySSID[] = "YourWifiNetworkNameGoesHere";
 // const char myPSK[] = "YourWifiPasswordGoesHere";
 
-// const char mySSID[] = "WNYC Data News Jetpack";
-// const char myPSK[] = "bena-spa-ti";
-
-const char mySSID[] = "The Bigger Dipper";
-const char myPSK[] = "mooshroom-hat-animal-thingy";
-
-
 ////////////////////////
 // Sparkfun Data Keys //
 ////////////////////////
 // const String publicKey = "YourPublicKeyHere";
 // const String privateKey = "YourPrivateKeyHere";
-
-const String publicKey = "6JbY0y2lNJsgvgDw2nAx";
-const String privateKey = "Wwv7za91Pwt4v4oMWmz5";
 
 // Phant detsination server:
 const String phantServer = "data.sparkfun.com";

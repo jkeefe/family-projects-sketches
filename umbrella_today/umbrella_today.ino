@@ -263,7 +263,7 @@ void getWeather()
     //      ... "weather":[{"id":500,"main": ... 
 
     // Using client.find("<something to find>"), we'll look for
-    // the first five appearanes of  "id": ... with the quotes and the colon
+    // the first five appearances of  "id": ... with the quotes and the colon
     // ...  and then read the very next character to see if it's a 3 or a 5.
 
     // There's actually one other "id": at the beginning of the stream that is
@@ -346,4 +346,4 @@ void errorLoop(int error)
   Serial.println(F("Looping forever."));
   for (;;)
     ;
-}
+} 
