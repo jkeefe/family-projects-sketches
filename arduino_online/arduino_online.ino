@@ -210,7 +210,7 @@ void serverSetup()
 {
   // begin initializes a ESP8266Server object. It will
   // start a server on the port specified in the object's
-  // constructor (in global area)
+  constructor (in global area)
   server.begin();
   Serial.print(F("Server started! Go to "));
   Serial.println(esp8266.localIP());

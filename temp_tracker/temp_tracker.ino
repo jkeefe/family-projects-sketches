@@ -46,14 +46,14 @@ June 2016
 //////////////////////////////
 // WiFi Network Definitions //
 //////////////////////////////
-// const char mySSID[] = "YourWifiNetworkNameGoesHere";
-// const char myPSK[] = "YourWifiPasswordGoesHere";
+const char mySSID[] = "YourWifiNetworkNameGoesHere";
+const char myPSK[] = "YourWifiPasswordGoesHere";
 
 ////////////////////////
 // Sparkfun Data Keys //
 ////////////////////////
-// const String publicKey = "YourPublicKeyHere";
-// const String privateKey = "YourPrivateKeyHere";
+const String publicKey = "YourPublicKeyHere";
+const String privateKey = "YourPrivateKeyHere";
 
 // Phant detsination server:
 const String phantServer = "data.sparkfun.com";
